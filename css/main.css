@@ -7,7 +7,7 @@
 .navbar{
     width: 100%;
     height: 100%;
-    background-color: #0057e7;
+    background-color: #185ADB;
     z-index: 20;
     padding: 0.5rem 1rem 0.5rem 1rem;
     transition: all 0.3s ease;
@@ -85,7 +85,7 @@ form{
     display: inline;
 }
 .agreement{
-    margin: 1rem 0
+    margin: 2rem 0
 }
 .stateBox{
     display:flex;
@@ -100,7 +100,7 @@ form{
 /* footer */
 footer {
     width: 100%;
-    background-color: #0046BE;
+    background-color: #185ADB;
     color: white;
     height:4rem;
     display: flex;
@@ -133,7 +133,7 @@ footer {
     top: 0;
     background: #ffeead ;
     text-align: center;
-    transition: all 1s ease;
+    transition: all 0.5s ease;
   }
   .navbar .menu.active{
     right: 0;
