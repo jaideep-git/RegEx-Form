@@ -23,29 +23,31 @@
         </div>
     </nav>
     <main>
-        <h1 style="margin-left:1rem; color:#323031; font-family: montserrat;">Event Registration</h1>
+        <h1 style="margin-left:1rem; color:#323031; font-family: montserrat; font-weight:700;">Event Registration</h1>
         <form action="#">
             <!-- Full Name -->
             <label for="">Full Name</label>
             <section class="full_name">
                 <div>
-                    <input type="text">
-                    <p>First Name</p>
+                    <input type="text" for="firstName" id="firstName" >
+                    <p id="firstNameError"></p>
                 </div>
                 <div>
-                    <input type="text">
-                    <p>Last Name</p>
+                    <input type="text" for="lastName" id="lastName">
+                    <p id="lastNameError"></p>
                 </div>
             </section>
 
             <!-- DOB -->
             <label for="email">DOB</label>
-            <input type="text" placeholder="DD/MM/YYY" style="width: 60%;">
+            <input type="text" placeholder="DD/MM/YYY" style="width: 60%;" id="dateBirth" for="dateBirth">
+            <p id="dobError"></p>
 
             <!-- Email Address -->
             <section>
                 <label for="email">E-mail</label>
-                <input type="text">
+                <input type="text" for="email" id="email">
+                <p id="emailAddressError"></p>
             </section>
 
             <!-- Phone Number -->
@@ -56,7 +58,7 @@
                     <option value="saab">+111</option>
                     <option value="mercedes">+91</option>
                 </select>
-                <input type="text" placeholder="eg. 768 689 1821">
+                <input type="text" placeholder="eg. 768 689 1821"  for="mobileNumber" id="mobileNumber">
             </section>
 
             <!-- Full Address -->
@@ -90,7 +92,7 @@
                 <input type="checkbox" id="scales" name="scales" checked>
                 <p class="checkbox">I agree to receive special offers and discount coupons via email.</p>
             </section>
-            <input type="submit" class="submit-btn">
+            <input type="submit" id="submit" class="submit-btn">
         </form>
     </main>
 

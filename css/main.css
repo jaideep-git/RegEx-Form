@@ -5,7 +5,7 @@
 }
 @font-face {
     font-family: montserrat;
-    src:url(../fonts/Montserrat-Regular.ttf);
+    src:url(../assets/fonts/Montserrat-Regular.ttf);
 }
 /* Navbar */
 .navbar{
@@ -50,6 +50,7 @@
     color: white
 }
 
+/* Form Styling */
 label{
     display: block;
     margin:1.5rem 0 0.5rem 0;
@@ -114,7 +115,6 @@ input[type="checkbox"]{
 .stateBox div{
     width:50%
 }
-
 .submit-btn{
     width: 100%;
     border-radius:3px;
@@ -123,6 +123,7 @@ input[type="checkbox"]{
     border: none;
     height:3rem;
 }
+
 /* footer */
 footer {
     width: 100%;
@@ -149,20 +150,20 @@ footer {
         display:flex;
         flex-direction: column;
     }
-  .menu-btn i.active:before{
-    content: "\f00d";
-  }
-  .navbar .menu{
-    position: fixed;
-    height: 100%;
-    width: 60%;
-    right: -100%;
-    top: 0;
-    background: #ffeead ;
-    text-align: center;
-    transition: all 0.5s ease;
-  }
-  .navbar .menu.active{
-    right: 0;
-  }
+    .menu-btn i.active:before{
+        content: "\f00d";
+    }
+    .navbar .menu{
+        position: fixed;
+        height: 100%;
+        width: 60%;
+        right: -100%;
+        top: 0;
+        background: #ffeead ;
+        text-align: center;
+        transition: all 0.5s ease;
+    }
+    .navbar .menu.active{
+        right: 0;
+    }
 }
