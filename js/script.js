@@ -9,6 +9,10 @@ $(document).ready(function(){
 
 let fieldsChecked;
 
+//  checkboxes 
+let checkBox1 = document.querySelector("#checkBox1")
+let checkBox2 = document.querySelector("#checkBox2")
+
 function hasCharCheck(dataToCheck){
     let pattern = /^[a-zA-Z]+$/;
     if(pattern.test(dataToCheck.field.value)){
@@ -61,13 +65,14 @@ function postalCodeValidation(dataToCheck){
 function resetErrors(){
     fieldsChecked.forEach(inputField =>{
         inputField.error.innerText = "";
-        inputField.field.style.border = "1px solid grey"
+        inputField.field.style.border = "1px solid grey";
+        document.querySelector("#checkBoxError").innerText = "";
+        document.querySelector("#errorBox").style.display= "none";
     })
 }
 
 function formClickHandler(e){
     console.log("Check that form!")
-    let errorsFound = 0;
     resetErrors();
     e.preventDefault();
 
@@ -78,11 +83,15 @@ function formClickHandler(e){
             inputField.field.style.border= "none"
             inputField.field.style.borderBottom = "1px solid red"
         }
-        else if (inputField.checker(inputField)==false){
+        if (inputField.checker(inputField)==false){
             inputField.error.innerText= inputField.msg;
-            errorsFound +=1;
         }
     })
+
+    if(checkBox1.checked == false || checkBox2.checked == false){
+        document.querySelector("#errorBox").style.display= "block";
+        document.querySelector("#checkBoxError").innerText = "You must agree with the Terms and Conditions and receiving promotional emails."
+    }
     window.scrollTo(0, 0);
 }
 
@@ -107,14 +116,14 @@ function initForm() {
 
     // * Declaring data objects for checking the information entered by the user
     fieldsChecked = [
-        {field:firstName , checker: hasCharCheck , error: firstNameError, msg:"Please enter a Valid first name"},
-        {field:lastName , checker: hasCharCheck , error: lastNameError, msg:"Please enter a Valid last name"},
-        {field:dateBirth , error: dateBirthError, msg:"Please enter a Valid Date of birth"},
-        {field:email , checker:hasEmailValid , error: emailError, msg:"Please enter a Valid email address"},
+        {field:firstName , checker: hasCharCheck , error: firstNameError, msg:"Please enter a valid first name"},
+        {field:lastName , checker: hasCharCheck , error: lastNameError, msg:"Please enter a valid last name"},
+        {field:dateBirth , error: dateBirthError, checker: addressCheck, msg:"Please enter a valid Date of birth"},
+        {field:email , checker:hasEmailValid , error: emailError, msg:"Please enter a valid email address"},
         {field:phoneNumber , checker:phoneNumberCheck, error: phoneNumbeError, msg:"Phone number must be 10 digits"},
         {field:address , error: addressError,  checker: addressCheck,  msg:"Please enter valid address"},
         {field:city , checker:cityValidation , error: cityError, msg:"Please enter a valid city name"},
-        {field:postalCode , checker:postalCodeValidation , error: postalCodeError, msg:"Please enter a valid city name"},
+        {field:postalCode , checker:postalCodeValidation , error: postalCodeError, msg:"Please enter a valid postal code"},
     ]
     let submitForm = document.querySelector("#submit");
     submitForm.addEventListener("click", formClickHandler);

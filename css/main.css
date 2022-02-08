@@ -134,6 +134,16 @@ input[type="checkbox"]{
     font-weight:200;
     color: red;
 }
+#errorBox{
+    display:none;
+    margin: 0 1rem;
+    font-size:13px;
+    text-align: center;
+    font-family:montserrat;
+    background-color:rgb(233, 64, 64,0.4);
+    padding:10px 10px;
+    border-radius:3px;
+}
 /* footer */
 footer {
     width: 100%;
