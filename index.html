@@ -24,47 +24,55 @@
     </nav>
     <main>
         <h1 style="margin-left:1rem; color:#323031; font-family: montserrat; font-weight:700;">Event Registration</h1>
+        <div id="errorBox"></div>
         <form action="#">
             <!-- Full Name -->
-            <label for="">Full Name</label>
             <section class="full_name">
                 <div>
+                    <label for="">First Name</label>
                     <input type="text" for="firstName" id="firstName" >
-                    <p id="firstNameError"></p>
+                    <p id="firstNameError" class="error"></p>
                 </div>
                 <div>
+                    <label for="">Last Name</label>
                     <input type="text" for="lastName" id="lastName">
-                    <p id="lastNameError"></p>
+                    <p id="lastNameError"  class="error"></p>
                 </div>
             </section>
 
             <!-- DOB -->
-            <label for="email">DOB</label>
-            <input type="text" placeholder="DD/MM/YYY" style="width: 60%;" id="dateBirth" for="dateBirth">
-            <p id="dobError"></p>
-
+            <section>
+                <label for="email">DOB</label>
+                <input type="date" id="dateBirth" name="trip-start"  min="1900-01-01"  max="2022-12-31">
+                <p id="dobError"  class="error"></p>
+            </section>
+            
             <!-- Email Address -->
             <section>
                 <label for="email">E-mail</label>
                 <input type="text" for="email" id="email">
-                <p id="emailAddressError"></p>
+                <p id="emailAddressError"  class="error"></p>
             </section>
 
             <!-- Phone Number -->
-            <label for="email">Phone Number</label>
+            <label for="mobileNumber">Phone Number</label>
             <section class="phone-number">
                 <select name="" id="">
                     <option value="volvo">+1</option>
                     <option value="saab">+111</option>
                     <option value="mercedes">+91</option>
                 </select>
-                <input type="text" placeholder="eg. 768 689 1821"  for="mobileNumber" id="mobileNumber">
+                <div>
+                    <input type="text" placeholder="eg. 768 689 1821"  for="mobileNumber" id="mobileNumber">
+                    <p id="mobileNumberError"  class="error"></p>
+                </div>
             </section>
 
             <!-- Full Address -->
             <section>
                 <label for="">Address</label>
-                <input type="text" placeholder="Street Address">
+                <input type="text" id="address" placeholder="Street Address">
+                <p id="addressError"  class="error"></p>
                 <div class="stateBox">
                     <div>
                         <label for="">Province</label>
@@ -77,19 +85,21 @@
                     </div>
                     <div>
                         <label for="">City</label>
-                        <input type="text">
+                        <input type="text" id="city">
+                        <p id="cityError"  class="error"></p>
                     </div>
                 </div>
                 <label for="">Postal Code</label>
-                <input type="text" placeholder="eg. L6P 1K9" id="postal_code">
+                <input type="text" placeholder="eg. A0A 1B1" id="postalCode">
+                <p id="postalCodeError"  class="error"></p>
             </section>
 
             <!-- Agreement Section -->
             <section class="agreement">
-                <input type="checkbox" id="scales" name="scales" checked>
-                <p class="checkbox">I acknowledge that I have read and agree to Rules and regulations.</->
+                <input type="checkbox" id="scales" name="scales" >
+                <p class="checkbox">I acknowledge that I have read and agree to Rules and regulations.</p>
                 <p></p>
-                <input type="checkbox" id="scales" name="scales" checked>
+                <input type="checkbox" id="scales" name="scales">
                 <p class="checkbox">I agree to receive special offers and discount coupons via email.</p>
             </section>
             <input type="submit" id="submit" class="submit-btn">
