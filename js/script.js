@@ -83,7 +83,7 @@ function formClickHandler(e){
             inputField.field.style.border= "none"
             inputField.field.style.borderBottom = "1px solid red"
         }
-        if (inputField.checker(inputField)==false){
+        else if (inputField.checker(inputField)==false){
             inputField.error.innerText= inputField.msg;
         }
     })
