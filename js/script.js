@@ -72,7 +72,6 @@ function resetErrors(){
 }
 
 function formClickHandler(e){
-    console.log("Check that form!")
     resetErrors();
     e.preventDefault();
 
