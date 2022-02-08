@@ -5,7 +5,7 @@ $(document).ready(function(){
     });
 })
 
-document.querySelector("#firstNameError").innerText= "First Name";
+document.querySelector("#firstNameError").innerText= "First Name*";
 document.querySelector("#lastNameError").innerText= "Last Name";
 
 //*** Form Validation using RegEx ***//
