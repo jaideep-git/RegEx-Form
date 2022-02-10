@@ -32,7 +32,7 @@ function isEmailValid(dataToCheck ){
 }
 
 function phoneNumberCheck(dataToCheck){
-    let pattern = /^[#.0-9a-zA-Z\s,-]+$/;
+    let pattern = /^[0-9]{10}$/;
     if(pattern.test(dataToCheck.field.value)){
         return true;
     }
@@ -48,7 +48,7 @@ function addressCheck(dataToCheck){
 }
 
 function cityValidation(dataToCheck){
-    let pattern = /^(?:[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/;
+    let pattern = /^(?:[A-Za-z]{2,15}(?:(\.\s|'s\s|\s?-\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/;
     if(pattern.test(dataToCheck.field.value)){
         return true;
     }
