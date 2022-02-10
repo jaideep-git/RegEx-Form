@@ -1,3 +1,4 @@
+//* mobile toggle menu navigation
 $(document).ready(function(){
     $('.menu-btn').click(function(){
         $('.navbar .menu').toggleClass("active");
@@ -5,13 +6,13 @@ $(document).ready(function(){
     });
 })
 
-//*** Form Validation using RegEx ***//
+let fieldsChecked = [];
 
-let fieldsChecked;
+//* Checkboxes 
+let checkBox1 = document.querySelector("#checkBox1");
+let checkBox2 = document.querySelector("#checkBox2");
 
-//  checkboxes 
-let checkBox1 = document.querySelector("#checkBox1")
-let checkBox2 = document.querySelector("#checkBox2")
+//*********** RegEx Pattern Validation Functions ************ //
 
 function hasCharCheck(dataToCheck){
     let pattern = /^[a-zA-Z]+$/;
@@ -21,7 +22,7 @@ function hasCharCheck(dataToCheck){
     return false;
 }
 
-function hasEmailValid(dataToCheck ){
+function isEmailValid(dataToCheck ){
     let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
     if(pattern.test(dataToCheck.field.value)){
         return true;
@@ -61,37 +62,94 @@ function postalCodeValidation(dataToCheck){
     return false;
 }
 
-// Function for resetting the errors after form submisson 
+//*********** Reset Functions  ************ //
+
 function resetErrors(){
     fieldsChecked.forEach(inputField =>{
         inputField.error.innerText = "";
+        inputField.error.style.color = "grey";
         inputField.field.style.border = "1px solid grey";
-        document.querySelector("#checkBoxError").innerText = "";
-        document.querySelector("#errorBox").style.display= "none";
     })
 }
 
-function formClickHandler(e){
-    resetErrors();
-    e.preventDefault();
+function resetStyles(){
+    document.querySelector("#errorBox").style.display= "none";
+    document.querySelector("#errorBox").style.background = "";
+    document.querySelector("#errorBox").style.color = "";
+    document.querySelector("#errorBox").style.fontWeight = "";
+    document.querySelector("#errorBox").style.fontSize = "";
+    document.querySelector("#checkBoxError").innerText = "";
+}
 
-    // * automated error message
+function resetFields(){
+    fieldsChecked.forEach(inputField => {
+        inputField.field.value = ""
+    });
+    checkBox1.checked = false;
+    checkBox2.checked = false;
+}
+
+//* Success message styling
+function formSuccessMsgStyle(){
+    document.querySelector("#errorBox").style.display= "block";
+    document.querySelector("#errorBox").style.background = "transparent";
+    document.querySelector("#errorBox").style.color = "Blue";
+    document.querySelector("#errorBox").style.fontWeight = "600";
+    document.querySelector("#errorBox").style.fontSize = "15px";
+}
+
+//*********** Fields Validations  ************ //
+
+let fieldsValidation = () =>{
+    let errors = 0;
+    resetStyles();
     fieldsChecked.forEach(inputField => {
         if(inputField.field.value == ""){
             inputField.error.innerText= "This field is required";
             inputField.field.style.border= "none"
+            inputField.error.style.color = "red";
             inputField.field.style.borderBottom = "1px solid red"
+            errors +=1;
         }
         else if (inputField.checker(inputField)==false){
             inputField.error.innerText= inputField.msg;
+            inputField.field.style.border= "none"
+            inputField.field.style.borderBottom = "1px solid red"
+            inputField.error.style.color = "red";
+            errors +=1;
         }
-    })
+    });
 
     if(checkBox1.checked == false || checkBox2.checked == false){
         document.querySelector("#errorBox").style.display= "block";
         document.querySelector("#checkBoxError").innerText = "You must agree with the Terms and Conditions and receiving promotional emails."
-    }
+        errors +=1;
+    };
+
+    return new Promise((resolve, reject) =>{
+        if (errors == 0){
+            resolve('Form Submitted Successfully !');
+        }else{
+            reject('error')
+        }
+    });
+}
+
+//* Form submisson Event Handler
+
+function formClickHandler(e){
+    resetErrors();
+    e.preventDefault();
     window.scrollTo(0, 0);
+
+    fieldsValidation().then((success) => {
+        formSuccessMsgStyle();
+        resetFields();
+        document.querySelector("#checkBoxError").innerText = success;
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
 }
 
 // * Grabbing input and error fields
@@ -112,23 +170,20 @@ function initForm() {
     let cityError = document.querySelector('#cityError');
     let postalCode = document.querySelector('#postalCode');
     let postalCodeError = document.querySelector('#postalCodeError');
-
     // * Declaring data objects for checking the information entered by the user
     fieldsChecked = [
-        {field:firstName , checker: hasCharCheck , error: firstNameError, msg:"Please enter a valid first name"},
-        {field:lastName , checker: hasCharCheck , error: lastNameError, msg:"Please enter a valid last name"},
-        {field:dateBirth , error: dateBirthError, checker: addressCheck, msg:"Please enter a valid Date of birth"},
-        {field:email , checker:hasEmailValid , error: emailError, msg:"Please enter a valid email address"},
-        {field:phoneNumber , checker:phoneNumberCheck, error: phoneNumbeError, msg:"Phone number must be 10 digits"},
-        {field:address , error: addressError,  checker: addressCheck,  msg:"Please enter valid address"},
-        {field:city , checker:cityValidation , error: cityError, msg:"Please enter a valid city name"},
-        {field:postalCode , checker:postalCodeValidation , error: postalCodeError, msg:"Please enter a valid postal code"},
+        {field: firstName , checker: hasCharCheck , error: firstNameError, msg: "Please enter a valid first name"},
+        {field: lastName , checker: hasCharCheck , error: lastNameError, msg: "Please enter a valid last name"},
+        {field: dateBirth , error: dateBirthError, checker: addressCheck, msg: "Please enter a valid date of birth"},
+        {field: email , checker: isEmailValid , error: emailError, msg: "Please enter a valid email address"},
+        {field: phoneNumber , checker: phoneNumberCheck, error: phoneNumbeError, msg: "Phone number must be 10 digits"},
+        {field: address , error: addressError,  checker: addressCheck,  msg:" Please enter valid address"},
+        {field: city , checker: cityValidation , error: cityError, msg: "Please enter a valid city name"},
+        {field: postalCode , checker: postalCodeValidation , error: postalCodeError, msg: "Please enter a valid postal code"},
     ]
     let submitForm = document.querySelector("#submit");
     submitForm.addEventListener("click", formClickHandler);
 }
-
 document.addEventListener("DOMContentLoaded", function(){
     initForm();
 });
-

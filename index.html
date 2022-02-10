@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link type="text/css" rel="stylesheet" href="css/materialize.css"/>
     <link rel="stylesheet" href="css/main.css">
-    <title>ReegEx Form</title>
+    <title>RegEx Form</title>
 </head>
 <body>
     <nav class="navbar">
@@ -29,47 +29,42 @@
         </div>
         <form action="#">
             <!-- Full Name -->
-            <section class="full_name">
+            <section class="full-name">
                 <div>
-                    <label for="">First Name</label>
-                    <input type="text" for="firstName" id="firstName" >
+                    <label for="firstName">First Name</label>
+                    <input name="firstName" type="text" id="firstName" placeholder="first name">
                     <p id="firstNameError" class="error"></p>
                 </div>
                 <div>
                     <label for="">Last Name</label>
-                    <input type="text" for="lastName" id="lastName">
-                    <p id="lastNameError"  class="error"></p>
+                    <input name="lastName" type="text" id="lastName" placeholder="last name">
+                    <p id="lastNameError" class="error"></p>
                 </div>
             </section>
-
-            <!-- DOB -->
+            <!-- Date of Birth -->
             <section>
-                <label for="dob">DOB</label>
-                <input type="date" id="dateBirth" name="dob"  min="1900-01-01"  max="2022-12-31">
-                <p id="dobError"  class="error"></p>
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dateBirth" name="dob" min="1900-01-01"  max="2022-12-31">
+                <p id="dobError" class="error"></p>
             </section>
-            
             <!-- Email Address -->
             <section>
                 <label for="email">E-mail</label>
-                <input type="text" name="email" id="email">
-                <p id="emailAddressError"  class="error"></p>
+                <input type="text" name="email" id="email" placeholder="Email Address">
+                <p id="emailAddressError" class="error"></p>
             </section>
-
             <!-- Phone Number -->
             <label for="mobileNumber">Phone Number</label>
             <section class="phone-number">
-                <select name="" id="">
-                    <option value="volvo">+1</option>
-                    <option value="saab">+111</option>
-                    <option value="mercedes">+91</option>
+                <select name="phoneCode" id="phoneCodes">
+                    <option value="+1">+1</option>
+                    <option value="+1">+1 ( US )</option>
                 </select>
                 <div>
                     <input type="text" placeholder="eg. 768 689 1821"  for="mobileNumber" id="mobileNumber">
-                    <p id="mobileNumberError"  class="error"></p>
+                    <p id="mobileNumberError" class="error"></p>
                 </div>
             </section>
-
             <!-- Full Address -->
             <section>
                 <label for="address">Address</label>
@@ -78,24 +73,23 @@
                 <div class="stateBox">
                     <div>
                         <label for="">Province</label>
-                        <select name="" id="">
-                            <option value="volvo">Alberta</option>
-                            <option value="saab">British Columbia</option>
-                            <option value="mercedes">Ontario</option>
-                            <option value="mercedes">Nova Scotia</option>
+                        <select name="" id="" class="dropdown-style">
+                            <option value="Ontario">Ontario</option>
+                            <option value="Alberta">Alberta</option>
+                            <option value="British Columbia">British Columbia</option>
+                            <option value="Nova Scotia">Nova Scotia</option>
                         </select>
                     </div>
                     <div>
-                        <label for="">City</label>
-                        <input type="text" id="city">
-                        <p id="cityError"  class="error"></p>
+                        <label for="city">City</label>
+                        <input name="city" type="text" id="city" placeholder="Enter your City Name">
+                        <p id="cityError" class="error"></p>
                     </div>
                 </div>
-                <label for="">Postal Code</label>
-                <input type="text" placeholder="eg. A0A 1B1" id="postalCode">
-                <p id="postalCodeError"  class="error"></p>
+                <label for="postalCode">Postal Code</label>
+                <input name="postalCode" type="text" placeholder="" id="postalCode">
+                <p id="postalCodeError" class="error">eg. A0A 1B1</p>
             </section>
-
             <!-- Agreement Section -->
             <section class="agreement">
                 <input type="checkbox" id="checkBox1" name="agreement" >
@@ -107,7 +101,6 @@
             <input type="submit" id="submit" class="submit-btn">
         </form>
     </main>
-
     <footer>
         <p>©BuyMore Dollars 2022. All rights reserved.</p>
     </footer>

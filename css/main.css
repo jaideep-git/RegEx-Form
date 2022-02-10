@@ -76,11 +76,11 @@ select{
 form{
     padding:0 1rem;
 }
-.full_name{
+.full-name{
     display:flex;
     gap: 10px;
 }
-.full_name div{
+.full-name div{
     width: 100%;
 }
 .phone-number div{
@@ -143,6 +143,9 @@ input[type="checkbox"]{
     background-color:rgb(233, 64, 64,0.4);
     padding:10px 10px;
     border-radius:3px;
+}
+#postalCodeError{
+    color: gray;
 }
 /* footer */
 footer {
