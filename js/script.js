@@ -7,6 +7,7 @@ $(document).ready(function(){
 })
 
 let fieldsChecked = [];
+document.querySelector('#postalCodeError').innerText = "eg. A0A 1B1";
 
 //* Checkboxes 
 let checkBox1 = document.querySelector("#checkBox1");
@@ -85,6 +86,7 @@ function resetFields(){
     fieldsChecked.forEach(inputField => {
         inputField.field.value = ""
     });
+    document.querySelector('#postalCodeError').innerText = "eg. A0A 1B1";
     checkBox1.checked = false;
     checkBox2.checked = false;
 }

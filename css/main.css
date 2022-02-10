@@ -7,6 +7,10 @@
     font-family: montserrat;
     src:url(../assets/fonts/Montserrat-Regular.ttf);
 }
+@font-face {
+    font-family: ErasBold;
+    src:url(../assets/fonts/ErasBoldITC.ttf);
+}
 /* Navbar */
 .navbar{
     width: 100%;
@@ -29,7 +33,6 @@
 .navbar.sticky .menu li a:hover{
     color: black;
 }
-
 
 /*Logo*/
 .logo{
