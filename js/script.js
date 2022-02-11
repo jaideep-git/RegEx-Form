@@ -87,6 +87,7 @@ function resetFields(){
         inputField.field.value = ""
     });
     document.querySelector('#postalCodeError').innerText = "eg. A0A 1B1";
+    document.querySelector('#postalCode').placeholder = "";
     checkBox1.checked = false;
     checkBox2.checked = false;
 }
@@ -144,12 +145,14 @@ function formClickHandler(e){
     e.preventDefault();
     window.scrollTo(0, 0);
 
-    fieldsValidation().then((success) => {
+    fieldsValidation()
+    .then((success) => {
         formSuccessMsgStyle();
         resetFields();
         document.querySelector("#checkBoxError").innerText = success;
     })
     .catch((error) =>{
+        document.querySelector('#postalCode').placeholder = "eg. A0A 1B1";
         console.log(error);
     })
 }
