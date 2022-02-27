@@ -8,6 +8,7 @@ $(document).ready(function(){
 
 let fieldsChecked = [];
 document.querySelector('#postalCodeError').innerText = "eg. A0A 1B1";
+let errorBox = document.querySelector("#errorBox") 
 
 //* Checkboxes 
 let checkBox1 = document.querySelector("#checkBox1");
@@ -74,11 +75,7 @@ function resetErrors(){
 }
 
 function resetStyles(){
-    document.querySelector("#errorBox").style.display= "none";
-    document.querySelector("#errorBox").style.background = "";
-    document.querySelector("#errorBox").style.color = "";
-    document.querySelector("#errorBox").style.fontWeight = "";
-    document.querySelector("#errorBox").style.fontSize = "";
+    errorBox.classList.remove("erroBoxStyle")
     document.querySelector("#checkBoxError").innerText = "";
 }
 
@@ -94,38 +91,39 @@ function resetFields(){
 
 //* Success message styling
 function formSuccessMsgStyle(){
-    document.querySelector("#errorBox").style.display= "block";
-    document.querySelector("#errorBox").style.background = "transparent";
-    document.querySelector("#errorBox").style.color = "Blue";
-    document.querySelector("#errorBox").style.fontWeight = "600";
-    document.querySelector("#errorBox").style.fontSize = "15px";
+    errorBox.classList.add("successMsgStyle");
+}
+
+// * Error message styling
+function formErrorMsgStyle(){
+    fieldsChecked.forEach(inputField => {
+    inputField.field.style.border= "none"
+    inputField.error.style.color = "red";
+    inputField.field.style.borderBottom = "1px solid red"
+    })
 }
 
 //*********** Fields Validations  ************ //
-
 let fieldsValidation = () =>{
     let errors = 0;
     resetStyles();
     fieldsChecked.forEach(inputField => {
         if(inputField.field.value == ""){
             inputField.error.innerText= "This field is required";
-            inputField.field.style.border= "none"
-            inputField.error.style.color = "red";
-            inputField.field.style.borderBottom = "1px solid red"
+            formErrorMsgStyle()
             errors +=1;
         }
         else if (inputField.checker(inputField)==false){
             inputField.error.innerText= inputField.msg;
-            inputField.field.style.border= "none"
-            inputField.field.style.borderBottom = "1px solid red"
-            inputField.error.style.color = "red";
+            formErrorMsgStyle()
             errors +=1;
         }
     });
 
+    //* Checkbox check
     if(checkBox1.checked == false || checkBox2.checked == false){
-        document.querySelector("#errorBox").style.display= "block";
-        document.querySelector("#checkBoxError").innerText = "You must agree with the Terms and Conditions and receiving promotional emails."
+        document.querySelector("#checkBoxError").innerText = "You must agree with the Terms and Conditions and receiving promotional emails.";
+        errorBox.classList.add("erroBoxStyle")
         errors +=1;
     };
 
@@ -139,7 +137,6 @@ let fieldsValidation = () =>{
 }
 
 //* Form submisson Event Handler
-
 function formClickHandler(e){
     resetErrors();
     e.preventDefault();

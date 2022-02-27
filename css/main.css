@@ -103,7 +103,6 @@ form{
     display: inline;
     font-size:17px;
     font-family: montserrat;
-    
 }
 input[type="checkbox"]{
     margin-top:1rem
@@ -137,8 +136,11 @@ input[type="checkbox"]{
     font-weight:200;
     color: red;
 }
-#errorBox{
+.errorStyle{
     display:none;
+}
+.erroBoxStyle{
+    display: block;
     margin: 0 1rem;
     font-size:13px;
     text-align: center;
@@ -147,8 +149,18 @@ input[type="checkbox"]{
     padding:10px 10px;
     border-radius:3px;
 }
+.successMsgStyle{
+    display: block;
+    color: blue;
+    font-weight: 600;
+    font-size:15px;
+    text-align: center;
+}
 #postalCodeError{
     color: gray;
+}
+.reset_styles{
+    display:none
 }
 /* footer */
 footer {
@@ -163,6 +175,7 @@ footer {
     align-items:center;
     font-family:Arial, Helvetica, sans-serif;
 }
+
 
 /***** Mobile View *****/
 @media (max-width: 974px) {
