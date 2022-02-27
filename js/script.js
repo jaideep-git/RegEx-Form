@@ -94,15 +94,6 @@ function formSuccessMsgStyle(){
     errorBox.classList.add("successMsgStyle");
 }
 
-// * Error message styling
-function formErrorMsgStyle(){
-    fieldsChecked.forEach(inputField => {
-    inputField.field.style.border= "none"
-    inputField.error.style.color = "red";
-    inputField.field.style.borderBottom = "1px solid red"
-    })
-}
-
 //*********** Fields Validations  ************ //
 let fieldsValidation = () =>{
     let errors = 0;
@@ -110,12 +101,16 @@ let fieldsValidation = () =>{
     fieldsChecked.forEach(inputField => {
         if(inputField.field.value == ""){
             inputField.error.innerText= "This field is required";
-            formErrorMsgStyle()
+            inputField.field.style.border= "none"
+            inputField.error.style.color = "red";
+            inputField.field.style.borderBottom = "1px solid red"
             errors +=1;
         }
         else if (inputField.checker(inputField)==false){
             inputField.error.innerText= inputField.msg;
-            formErrorMsgStyle()
+            inputField.field.style.border= "none"
+            inputField.error.style.color = "red";
+            inputField.field.style.borderBottom = "1px solid red"
             errors +=1;
         }
     });
